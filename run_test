@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Run test scripts listed on the command line
+#
+# This is a modified version of https://gist.github.com/1300101
+# which is specialized for running node tests.
+
+echo
+for file in $@; do
+  printf "\033[90m   ${file#test/}\033[0m "
+  $(readlink -f $file) && printf "\033[36m✓\033[0m\n"
+  test $? -eq 0 || exit $?
+done
+echo
+
