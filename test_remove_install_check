@@ -1,0 +1,5 @@
+pf remove git
+should_fail pf check git
+pf install git
+pf check git
+
