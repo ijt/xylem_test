@@ -1,7 +1,6 @@
 # Run test scripts listed on the command line
 #
-# This is a modified version of https://gist.github.com/1300101
-# which is specialized for running node tests.
+# This is a modified version of https://gist.github.com/1300101.
 
 if [ $# == 0 ]; then
     echo "Usage: $0 [test shell scripts]"
@@ -30,4 +29,3 @@ for file in $@; do
     rm $test_tmp
 done
 echo "All tests passed." 
-

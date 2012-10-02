@@ -1,5 +1,4 @@
-yes | pf remove git
-should_fail pf check git
-yes | pf install git
-pf check git
-
+yes | pw remove git
+should_fail pw check git
+yes | pw install git
+pw check git
