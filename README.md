@@ -1,7 +1,7 @@
 pftest: tests for the pf tool
 =============================
 
-First install pf or add the directory containing it to your PATH. Then run
+Here is one way to run the tests:
 
-    ./run_test test_*
+    PATH=/directory/containing/pf:$PATH ./run_test test_*
 

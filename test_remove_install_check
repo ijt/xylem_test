@@ -1,5 +1,5 @@
-pf remove git
+yes | pf remove git
 should_fail pf check git
-pf install git
+yes | pf install git
 pf check git
 
