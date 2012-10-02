@@ -26,6 +26,8 @@ for file in $@; do
     bash $test_tmp && printf "\033[36m✓\033[0m\n"
 
     test $? -eq 0 || exit $?
+
+    rm $test_tmp
 done
 echo "All tests passed." 
 
