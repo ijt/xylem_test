@@ -1,6 +1,7 @@
+# Test that removing, checking and installing all work together.
+# This test should probably be run under sudo.
+
 package=apr
-sudo $(which xylem) init
-xylem update
 yes | xylem remove $package
 should_fail xylem check $package
 yes | xylem install $package
