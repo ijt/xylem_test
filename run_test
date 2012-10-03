@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Run test scripts listed on the command line
 #
 # This is a modified version of https://gist.github.com/1300101.
@@ -9,10 +11,16 @@ fi
 
 # This function can be used in test scripts to indicate that
 # the rest of the line is a command that is expected to fail.
+header='
+set -o errexit
+
 function should_fail() {
-    "$@"
-    return ! $?
+    if "$@"; then
+        echo "Command should have failed but did not:" "$@"
+        exit 1
+    fi
 }
+'
 
 for file in $@; do
     printf "\033[90m   ${file#test/}\033[0m "
@@ -20,7 +28,7 @@ for file in $@; do
     # Make a modified version of the test script that starts with set -x. That
     # way the test will abort with an error message if any of its calls fails.
     test_tmp=`mktemp /tmp/test_XXXXX.sh`
-    (echo "set -x"; cat $file) > $test_tmp
+    (echo "$header"; cat $file) > $test_tmp
 
     bash $test_tmp && printf "\033[36m✓\033[0m\n"
 
