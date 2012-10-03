@@ -7,11 +7,12 @@ First install xylem:
     python setup.py install
     popd
 
-The tests depend on xylem being initialized:
+The tests need some initialization to be done first:
 
     sudo xylem init
+    xylem update
 
-Now run the tests:
+Now you can run the tests:
 
     ./run_test test_*
 
