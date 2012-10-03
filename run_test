@@ -12,6 +12,7 @@ fi
 # This function can be used in test scripts to indicate that
 # the rest of the line is a command that is expected to fail.
 header='
+set -x
 set -o errexit
 
 function should_fail() {
