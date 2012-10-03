@@ -1,4 +1,7 @@
-yes | pw remove git
-should_fail pw check git
-yes | pw install git
-pw check git
+sudo $(which xylem) init
+xylem update
+yes | xylem remove git
+should_fail xylem check git
+yes | xylem install git
+xylem check git
+
