@@ -1,6 +1,17 @@
-pwtest: tests for the pw tool
-=============================
+xylem-test: tests for the xylem tool
+====================================
 
-Here is one way to run the tests:
+First install xylem:
 
-    PATH=/directory/containing/pw:$PATH ./run_test test_*
+    pushd /directory/containing/xylem
+    python setup.py install
+    popd
+
+The tests depend on xylem being initialized:
+
+    sudo xylem init
+
+Now run the tests:
+
+    ./run_test test_*
+
