@@ -22,18 +22,25 @@ function should_fail() {
 }
 '
 
+num_passed=0
+num_tests=$#
 for file in $@; do
-    printf "\033[90m   ${file#test/}\033[0m "
-
-    # Make a modified version of the test script that starts with set -x. That
-    # way the test will abort with an error message if any of its calls fails.
-    test_tmp=`mktemp /tmp/test_XXXXX.sh`
+    # Make a modified version of the test script that includes some settings and
+    # functions.
+    test_tmp=`mktemp $file.XXXX`
     (echo "$header"; cat $file) > $test_tmp
 
-    bash $test_tmp && printf "\033[36m✓\033[0m\n"
+    logfile=`mktemp XXXX.log`
 
-    test $? -eq 0 || exit $?
+    printf "\033[90m$file\033[0m (logging to $logfile) "
+    if bash $test_tmp > $logfile 2>&1; then 
+        printf "\033[36m Passed \033[0m\n"
+        num_passed=$((num_passed + 1))
+    else
+        printf "\033[31m Failed \033[0m\n"
+    fi
 
     rm $test_tmp
 done
-echo "All tests passed." 
+echo "$num_passed of $num_tests tests passed."
+
