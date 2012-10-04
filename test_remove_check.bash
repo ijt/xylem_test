@@ -1,3 +1,3 @@
-yes | xylem remove $package
-should_fail xylem check $package
+yes | xylem remove fltk
+should_fail xylem check fltk
 
