@@ -1,0 +1,2 @@
+[[ $(xylem resolve fltk) = *fltk* ]]
+
