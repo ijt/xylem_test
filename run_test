@@ -31,7 +31,7 @@ for file in $@; do
     test_tmp=`mktemp $file.XXXX`
     (echo "$header"; cat $file) > $test_tmp
 
-    logfile=`mktemp XXXX.log`
+    logfile=`mktemp log.XXXX`
 
     printf "\033[90m$file\033[0m (logging to $logfile) "
     if bash $test_tmp > $logfile 2>&1; then 
